@@ -77,6 +77,14 @@
 				},
 				"uri": "i18n/i18n.properties"
 			},
+			"": {
+				"dataSource": "mainService",
+				"settings": {
+					"metadataUrlParams": {
+						"sap-documentation": "heading"
+					}
+				}
+			},
 			"mainModel": {
 				"type": "sap.ui.model.odata.v2.ODataModel",
 				"settings": {
@@ -94,14 +102,14 @@
 				"viewType": "XML",
 				"viewPath": "zapp.view",
 				"controlId": "idAppControl",
+				"controlAggregation": "detailPages",
 				"bypassed": {
 					"target": [
 						"master",
 						"notFound"
 					]
 				},
-				"async": true,
-				"viewLevel": 1
+				"async": true
 			},
 			"routes": [
 				{
@@ -116,6 +124,7 @@
 					"pattern": "HistoricalInvoices/{objectId}",
 					"name": "object",
 					"target": [
+						"master",
 						"object"
 					]
 				}
@@ -125,53 +134,31 @@
 					"viewName": "Master",
 					"viewLevel": 1,
 					"viewId": "master",
-					"controlId": "idAppControl",
-					"clearAggregation": true,
 					"controlAggregation": "masterPages"
 				},
 				"object": {
 					"viewName": "Detail",
 					"viewId": "detail",
-					"controlId": "idAppControl",
-					"controlAggregation": "detailPages",
-					"clearAggregation": true,
 					"viewLevel": 2
-				},
-				"fullscreen": {
-					"viewName": "Detail",
-					"viewId": "detail",
-					"viewLevel": 0,
-					"controlId": "idApp",
-					"controlAggregation": "pages"
 				},
 				"detailObjectNotFound": {
 					"viewName": "DetailObjectNotFound",
-					"viewId": "detailObjectNotFound",
-					"controlId": "idAppControl",
-					"controlAggregation": "detailPages"
+					"viewId": "detailObjectNotFound"
 				},
 				"detailNoObjectsAvailable": {
 					"viewName": "DetailNoObjectsAvailable",
 					"viewId": "detailNoObjectsAvailable",
-					"controlId": "idAppControl",
-					"controlAggregation": "detailPages",
 					"viewLevel": 3
 				},
 				"notFound": {
 					"viewName": "NotFound",
-					"viewId": "notFound",
-					"controlId": "idAppControl",
-					"controlAggregation": "detailPages"
+					"viewId": "notFound"
 				}
 			}
 		}
 	},
 	"sap.platform.hcp": {
 		"uri": "webapp",
-		"_version": "1.1.0"
-	},
-	"sap.platform.abap": {
-		"uri": "/sap/bc/ui5_ui5/sap/zappsuppl_inv/webapp",
 		"_version": "1.1.0"
 	}
 }

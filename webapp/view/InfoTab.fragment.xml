@@ -47,7 +47,7 @@ fragment for the Information section of the icon tab bar
 			</OverflowToolbar>
 		</headerToolbar>
 		<t:Table id="table" enableColumnReordering="false" selectionMode="MultiToggle" enableCellFilter="{ui>/cellFilterRequests}" filter="filterRequests"
-			rowSelectionChange="onSelection" fixedColumnCount="1" ariaLabelledBy="title">
+			rowSelectionChange="onSelection" updateFinish="finishedyo" fixedColumnCount="1" ariaLabelledBy="title">
 		
 			<t:columns>
 				<t:Column sortProperty="" width="3rem" resizable="false">

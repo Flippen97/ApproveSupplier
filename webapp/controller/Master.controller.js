@@ -1,4 +1,3 @@
-/*eslint-disable no-console, no-alert */
 /****************************************************/
 // Filename: Master.Controller.js
 // Created: Jerushan Benjamin
@@ -32,11 +31,12 @@ sap.ui.define([
 		 * @public
 		*/
 		onInit: function() {
+
 			var sServiceUrl = "/sap/opu/odata/sap/ZMM_APRROVE_SUPPLIER_INVOICE_SRV";
 			var oMod = new sap.ui.model.odata.ODataModel(sServiceUrl);
 			var oList = this.byId("list");
 			this.setModel(oMod);
- 
+
 			this._oList = oList;
 		
 			sap.ui.getCore().mastControl = this;
@@ -45,14 +45,7 @@ sap.ui.define([
 			this.getRouter().getRoute("master").attachPatternMatched(this._onMasterMatched, this);
 			this.getRouter().attachBypassed(this.onBypassed, this);
 		},
-		
-		onBeforeRendering: function() {
-		    /* Hiding the fullscreen control when running Master/Detail */
-//			sap.ui.getCore().byId("application-WorkflowTask-zapproveFI-component---app--idAppFullscreen").setVisible(true);
-//			sap.ui.getCore().byId("application-WorkflowTask-zapproveFI-component---app--idAppControl").setVisible(true);
-		},
-		
-		
+
 		/* =========================================================== */
 		// Refreshes the data in the list when triggered 
 		/* =========================================================== */

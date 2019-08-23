@@ -22,6 +22,7 @@ sap.ui.define([
 			init : function () {
 				oComponent = this;
 			
+				
 				UIComponent.prototype.init.apply(this, arguments);
 
 				// create the views based on the url/hash

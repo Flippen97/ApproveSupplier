@@ -36,6 +36,9 @@ sap.ui.define([
 			// between the busy indication for loading the view's meta data
 		//	onchange
 
+			this.getRouter().getRoute("object").attachPatternMatched(this._onObjectMatched, this);
+		
+      
 		},
 
 	   onNavBack: function(oEvent) {
