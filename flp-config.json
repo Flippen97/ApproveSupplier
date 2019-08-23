@@ -1,0 +1,34 @@
+{
+    "application": {
+        "id": "",
+        "title": "zapp.ZAPP_SUPLIER_INVOICENewNewFina10718",
+        "type": "SAP_UI5_Component",
+        "componentUrl": "/",
+        "appUrl": "#ZAPP_SUPLIER_INVOICENewNewFina10718-Display",
+        "navigationComponentName": "zapp",
+        "intentSemanticObject": "ZAPP_SUPLIER_INVOICENewNewFina10718",
+        "intentAction": "Display",
+        "html5ApplicationName": "zappsuplierinvoice",
+        "HCPParentApplicationName": ""
+    },
+    "assignment": {
+        "groups": [
+            "67da2481-c8d9-4f7b-9464-dd50e2dd17b4"
+        ],
+        "contentPackages": [
+            "4005eafa-b8a2-4034-bc35-f8f395dcc316"
+        ],
+        "categories": []
+    },
+    "tile": {
+        "type": "StaticTile",
+        "title": "Title",
+        "subtitle": "Subtitle",
+        "searchKeywords": "Title,Subtitle",
+        "displayIconUrl": "sap-icon://approvals",
+        "displayInfoText": "",
+        "size": "1x1",
+        "serviceURL": "",
+        "refreshInterval": ""
+    }
+}

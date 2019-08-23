@@ -1,0 +1,48 @@
+/*master filter css class*/
+.masterFilterclass .sapMPageHeader::before {
+   
+     border-top: transparent;
+    
+}
+
+/*remove dotted lines from the screen*/
+* {
+	outline: none !important;
+}
+
+.FilterDateLabelText.sapMLabel{
+	    margin-top: 0.5rem;
+}
+.bold {
+   display: -webkit-box;
+    /*font-weight: bold;*/
+    /*display: inline-block;*/
+}
+/*custom date filter */
+.FilterDateLabelText{
+	margin-top: 1rem;
+}
+
+.customDatePadding.sapUiRespGrid.sapUiRespGridHSpace2 {
+	padding: 0rem !important;
+}
+
+ .bold{
+   display: -webkit-box !important;
+}
+
+/*.DetailPage.sapUiFormResGrid>.sapUiFormTitle {*/
+/*    background-color: #eff4f9;*/
+/*}*/
+
+/*.DetailPage.sapMPageEnableScrolling.sapMITBContainerContent.sapUiForm.sapUiFormResGrid.sapUiFormTitle*/
+.sapMPanel>.sapMPanelHdr, 
+.sapMPanelWrappingDiv, 
+.sapMPanelWrappingDivTb,
+.sapUiFormResGrid>.sapUiFormTitle {
+    background-color: #eff4f9;
+}
+
+.TableMargin {
+    margin: 0rem !important;
+}

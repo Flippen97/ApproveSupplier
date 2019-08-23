@@ -1,0 +1,20 @@
+<!--****************************************************/
+// Filename: Notes.fragment.xml
+// Created: Jerushan Benjamin
+// Change history:
+// 18.4.2018 
+fragment for the Notes section of the icon tab bar
+/****************************************************-->
+<IconTabFilter icon="sap-icon://notes" iconColor="Default" id="idDetailNoteTab" key="tabNotes" text="{i18n>TAB_NOTES}"
+	xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:ui="sap.ca.ui" xmlns:f="sap.ui.layout.form">
+	<content>
+
+		<Input id="noteTitle" class="sapUiMediumMarginBegin sapUiTinyMarginTop" width="40%"	placeholder="{i18n>notes.title}"></Input>
+		<ui:Notes growing="false" id="notesFeed" showNoteInput="true" showNoData="false" items="{feedModel>/results}" textMaxLength="1000"
+			addNote="handleAddNote">
+			<ui:ExpansibleFeedListItem senderActive="false" showIcon="false" sender="{feedModel>title}" text="{feedModel>content}"
+				timestamp="{feedModel>created_by} :- {parts :[{path: 'feedModel>created_date'}], formatter: '.formatter.formatNoteDateTime'}"></ui:ExpansibleFeedListItem>
+		</ui:Notes>
+	
+	</content>
+</IconTabFilter>

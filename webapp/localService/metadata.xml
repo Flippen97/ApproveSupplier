@@ -1,0 +1,115 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZMM_APRROVE_SUPPLIER_INVOICE_SRV" xml:lang="en" sap:schema-version="1">
+            <EntityType Name="WorkflowItem" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="WorkitemID"/>
+                </Key>
+                <Property Name="WorkitemID" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="InvoicingPartyName" Type="Edm.String" Nullable="false" MaxLength="35" sap:label="Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GrossAmount" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="13" sap:unit="Currency" sap:label="Gross inv. amnt" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="DocumentDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:label="Time Stamp" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IsInvoice" Type="Edm.Boolean" Nullable="false" sap:label="Indicator" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="50" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="WorkInbox" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Belnr"/>
+                </Key>
+                <Property Name="Belnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Document Number" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiId" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Zfbdt" Type="Edm.String" MaxLength="15" sap:label="Baseline Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiText" Type="Edm.String" Nullable="false" MaxLength="120" sap:label="Work item text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiStat" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Status" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiCd" Type="Edm.String" MaxLength="15" sap:label="Creation Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="WiPrio" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Priority" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="WorkInbox_Header_nav" Relationship="ZMM_APRROVE_SUPPLIER_INVOICE_SRV.WorkInbox_Header" FromRole="FromRole_WorkInbox_Header" ToRole="ToRole_WorkInbox_Header"/>
+            </EntityType>
+            <EntityType Name="SupplHeader" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Belnr"/>
+                </Key>
+                <Property Name="Belnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Document Number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Fdtag" Type="Edm.String" MaxLength="15" sap:label="Planning date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Zrolename" Type="Edm.String" Nullable="false" sap:label="Role name data element" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Lifnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Vendor" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Name1" Type="Edm.String" Nullable="false" MaxLength="35" sap:label="Name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Zfbdt" Type="Edm.String" MaxLength="15" sap:label="Baseline Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bukrs" Type="Edm.String" Nullable="false" MaxLength="4" sap:label="Company Code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Blart" Type="Edm.String" Nullable="false" MaxLength="2" sap:label="Document Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Xblnr" Type="Edm.String" Nullable="false" MaxLength="16" sap:label="Reference" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bktxt" Type="Edm.String" Nullable="false" MaxLength="25" sap:label="Doc.Header Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bldat" Type="Edm.String" MaxLength="15" sap:label="Document Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Budat" Type="Edm.String" MaxLength="15" sap:label="Posting Date" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Wrbtr" Type="Edm.Decimal" Nullable="false" Precision="14" Scale="3" sap:label="Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Waers" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Currency" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Wmwst" Type="Edm.Decimal" Nullable="false" Precision="14" Scale="3" sap:label="Tax amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="Header_Item_nav" Relationship="ZMM_APRROVE_SUPPLIER_INVOICE_SRV.Header_Item" FromRole="FromRole_Header_Item" ToRole="ToRole_Header_Item"/>
+            </EntityType>
+            <EntityType Name="SupplItem" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Belnr"/>
+                    <PropertyRef Name="Buzei"/>
+                </Key>
+                <Property Name="Belnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Document Number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Decision" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Description" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Buzei" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Line item" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Wrbtr" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Amount" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Shkzg" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Debit/Credit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Hkont" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="G/L" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Txt50" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Long Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Kostl" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Cost Center" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Aufnr" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Order" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Prctr" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Profit Center" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Sgtxt" Type="Edm.String" Nullable="false" MaxLength="50" sap:label="Text" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="Header_Item" sap:content-version="1">
+                <End Type="ZMM_APRROVE_SUPPLIER_INVOICE_SRV.SupplHeader" Multiplicity="1" Role="FromRole_Header_Item"/>
+                <End Type="ZMM_APRROVE_SUPPLIER_INVOICE_SRV.SupplItem" Multiplicity="*" Role="ToRole_Header_Item"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Header_Item">
+                        <PropertyRef Name="Belnr"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Header_Item">
+                        <PropertyRef Name="Belnr"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="WorkInbox_Header" sap:content-version="1">
+                <End Type="ZMM_APRROVE_SUPPLIER_INVOICE_SRV.WorkInbox" Multiplicity="1" Role="FromRole_WorkInbox_Header"/>
+                <End Type="ZMM_APRROVE_SUPPLIER_INVOICE_SRV.SupplHeader" Multiplicity="1" Role="ToRole_WorkInbox_Header"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_WorkInbox_Header">
+                        <PropertyRef Name="Belnr"/>
+                    </Principal>
+                    <Dependent Role="ToRole_WorkInbox_Header">
+                        <PropertyRef Name="Belnr"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZMM_APRROVE_SUPPLIER_INVOICE_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="WorkInboxSet" EntityType="ZMM_APRROVE_SUPPLIER_INVOICE_SRV.WorkInbox" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SupplHeaderSet" EntityType="ZMM_APRROVE_SUPPLIER_INVOICE_SRV.SupplHeader" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SupplItemSet" EntityType="ZMM_APRROVE_SUPPLIER_INVOICE_SRV.SupplItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="WorkflowItems" EntityType="ZMM_APRROVE_SUPPLIER_INVOICE_SRV.WorkflowItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <AssociationSet Name="Header_ItemSet" Association="ZMM_APRROVE_SUPPLIER_INVOICE_SRV.Header_Item" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SupplHeaderSet" Role="FromRole_Header_Item"/>
+                    <End EntitySet="SupplItemSet" Role="ToRole_Header_Item"/>
+                </AssociationSet>
+                <AssociationSet Name="WorkInbox_HeaderSet" Association="ZMM_APRROVE_SUPPLIER_INVOICE_SRV.WorkInbox_Header" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="WorkInboxSet" Role="FromRole_WorkInbox_Header"/>
+                    <End EntitySet="SupplHeaderSet" Role="ToRole_WorkInbox_Header"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/opu/odata/sap/ZMM_APRROVE_SUPPLIER_INVOICE_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/opu/odata/sap/ZMM_APRROVE_SUPPLIER_INVOICE_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

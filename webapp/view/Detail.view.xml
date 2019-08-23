@@ -1,0 +1,51 @@
+<!--****************************************************/
+// Filename: Detail.view.xml
+// Created: Jerushan Benjamin
+// Change history:
+// 18.4.2018 
+Detail view with xml fragment tags for all the tabs
+/****************************************************-->
+<mvc:View controllerName="zapp.controller.Detail" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic"
+	xmlns:core="sap.ui.core" xmlns:footerbar="sap.ushell.ui.footerbar">
+	<semantic:DetailPage id="page" 	busyIndicatorDelay="0" class="DetailPage" navButtonPress="onNavBack" showNavButton="{device>/system/phone}"
+		title="{i18n>detailTitle}">
+		<semantic:content>
+			<ObjectHeader id="objectHeader" title="{i18n>detail.Vendor}: {detailModel>/Name1}"
+				number="{ parts:[{path:'detailModel>/Wrbtr'},{path:'detailModel>/Waers'}], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false ,decimalSeparator: ',',groupingSeparator: '.' ,groupingEnabled: true} }"
+				numberUnit="{detailModel>/Waers}">
+				<firstStatus>
+					<ObjectStatus id="WorkItemText" text="{WiStat}" state="{path:'WiStat',formatter: '.formatter.status'}"/>
+				</firstStatus>
+				<attributes>
+				<ObjectAttribute title="{i18n>detail.Vendornumber}" text="{detailModel>/Lifnr}"/>  
+					<ObjectAttribute title="{i18n>detail.Documentdate}"
+						text="{path:'detailModel>/Bldat',type: 'sap.ui.model.type.Date',formatOptions: {style: 'long',source: {pattern: 'MM/dd/YYYY'}}}"/>
+					<ObjectAttribute title="{i18n>detail.Documentdue}"   
+						text="{path:'detailModel>/Fdtag',type: 'sap.ui.model.type.Date',formatOptions: {style: 'long',source: {pattern: 'MM/dd/YYYY'}}}"/>
+				</attributes>
+			</ObjectHeader>
+			<IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding" select="handleTabSelected">
+				<items>
+					<!--Info tab -->
+					<core:Fragment fragmentName="zapp.view.InfoTab" type="XML"/>
+					<!--Attachment tab -->
+					<core:Fragment fragmentName="zapp.view.Attachment" type="XML"/>
+					<!-- Notes tab -->
+					<core:Fragment fragmentName="zapp.view.Notes" type="XML"/>
+					<!--History tab -->
+					<core:Fragment fragmentName="zapp.view.HistoryTab" type="XML"/>
+				</items>
+			</IconTabBar>
+		</semantic:content>
+		<semantic:customFooterContent>
+			<Button enabled="false" type="Ghost" icon="sap-icon://cancel" id="CancelButton" press="onAssignment" text="Cancel"/>
+		</semantic:customFooterContent>
+		<semantic:customFooterContent>
+			<Button enabled="true" type="Accept" icon="sap-icon://accept" id="ApproveButton" press="onAction" text="{i18n>detail.ApproveBTN}"/>
+		</semantic:customFooterContent>
+		<semantic:customFooterContent>
+			<Button enabled="true" type="Reject" icon="sap-icon://decline" id="RejectButton" press="onAction" text="{i18n>detail.RejectBTN}"/>
+		</semantic:customFooterContent>
+	
+	</semantic:DetailPage>
+</mvc:View>

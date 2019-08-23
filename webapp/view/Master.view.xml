@@ -1,0 +1,53 @@
+<!--****************************************************/
+// Filename: Master.view.xml
+// Created: Jerushan Benjamin
+// Change history:
+// 18.4.2018 
+View for the Master list section 
+/****************************************************-->
+<mvc:View controllerName="zapp.controller.Master" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m"
+	xmlns:semantic="sap.m.semantic">
+	<semantic:MasterPage id="page" title="{masterView>/title}" navButtonPress="onNavBack" showNavButton="false">
+		<semantic:subHeader>
+			<Bar id="headerBar">
+				<contentMiddle>
+					<SearchField id="searchField" tooltip="{i18n>masterSearchTooltip}" width="100%" liveChange="onSearch"></SearchField>
+				</contentMiddle>
+			</Bar>
+		</semantic:subHeader>
+		<semantic:content>
+			<PullToRefresh id="pullToRefresh" visible="true" refresh="handleRefresh"/>
+			<List id="list" items="{ path: '/WorkInboxSet', sorter: { path: 'WiCd', descending: true } }" growing="true" growingScrollToLoad="true"
+				updateFinished="onUpdateFinished">
+				<items>
+					<ObjectListItem id="listTemp" type="Active" press="onGoToDetail" title="{WiText}: {Belnr}">
+						<attributes>
+							<!--<ObjectAttribute title="Priority " text="{path:'WiPrio',formatter: '.formatter.priority'}"/>-->
+							<ObjectAttribute title="" />
+							<ObjectAttribute title="{i18n>master.creatDat}" text="{path:'WiCd',formatter: '.formatter.datechange'}"/>
+						</attributes>
+						<firstStatus>
+							<ObjectStatus text="{path:'WiPrio',formatter: '.formatter.priority'}" state="{path:'WiPrio',formatter: '.formatter.priorityCheck'}"/>
+						</firstStatus>
+					</ObjectListItem>
+				</items>
+			</List>
+		</semantic:content>
+		<semantic:sort>
+			<semantic:SortSelect id="sort" selectedKey="{masterView>/sortBy}" change="onSort">
+				<core:Item id="SortCreationDate" key="WiCd" text="{i18n>creationDate}"/>
+				<core:Item id="SortPriority" key="Belnr" text="{i18n>master.DocNo}"/>
+			</semantic:SortSelect>
+		</semantic:sort>
+		<semantic:filter>
+			<semantic:FilterAction id="filter" press="onOpenViewSettings"/>
+		</semantic:filter>
+		<semantic:group>
+			<semantic:GroupSelect id="group" selectedKey="{masterView>/groupBy}" change="onGroup">
+				<core:Item id="masterGroupNone" key="None" text="{i18n>masterGroupNone}"/>
+				<core:Item id="Priority" key="ZPriority" text="{i18n>priority}"/>
+				<core:Item id="CreationDate" key="WiCd" text="{i18n>creationDate}"/>
+			</semantic:GroupSelect>
+		</semantic:group>
+	</semantic:MasterPage>
+</mvc:View>

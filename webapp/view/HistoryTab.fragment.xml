@@ -1,0 +1,59 @@
+<!--****************************************************/
+// Filename: HistoryTab.fragment.xml
+// Created: Jerushan Benjamin
+// Change history:
+// 18.4.2018 
+fragment for the History section of the icon tab bar
+/****************************************************-->
+<IconTabFilter icon="sap-icon://history" iconColor="Default" id="idTabHistory" key="tabHistory" text="{i18n>TAB_HISTORY}"
+	xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<content>
+		<Label text="{parts:[{path: 'i18n>HISTORY.LBL_NO_HISTORY'}, {path: 'InvoicingPartyName'}], formatter: 'jQuery.sap.formatMessage'}"
+			visible="{parts :[{path: 'HistoryModel>/invoicesExist'}], formatter: 'ui.s2p.mm.supplinvoice.approve.util.Conversions.noHistoryLabelVisibilityTrigger'}"></Label>
+		<!--History table -->
+		<Table class="detailControlPadding" headerText="{i18n>history.header}" id="idHistoryTable" items="{HistoryModel>/results}" noDataText="{i18n>history.noData}">
+			<columns>
+				<Column hAlign="Left">
+					<header>
+						<Label text="{i18n>history.tasks}"></Label>
+					</header>
+				</Column>
+				<Column hAlign="Center" demandPopin="true" minScreenWidth="Medium">
+					<header>
+						<Label text="{i18n>history.status}"></Label>
+					</header>
+				</Column>
+				<Column hAlign="Center" demandPopin="true" minScreenWidth="Medium">
+					<header>
+						<Label text="{i18n>history.result}"></Label>
+					</header>
+				</Column>
+				<Column hAlign="Center" demandPopin="true" minScreenWidth="Medium">
+					<header>
+						<Label text="{i18n>history.date}"></Label>
+					</header>
+				</Column>
+				<Column hAlign="Center" demandPopin="true" minScreenWidth="Medium">
+					<header>
+						<Label text="{i18n>history.time}"></Label>
+					</header>
+				</Column>
+				<!-- Extends table columns on history tab -->
+				<core:ExtensionPoint name="CustomerExtensionForHistoryTableColumns"/>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<ObjectIdentifier title="{HistoryModel>WiText}"></ObjectIdentifier>
+						<Text text="{HistoryModel>WiStat}"></Text>
+						<Text text="{HistoryModel>Result}"></Text>
+						<Text text="{path:'HistoryModel>WiCd',type: 'sap.ui.model.type.Date',formatOptions: {style: 'long',source: {pattern: 'MM/dd/YYYY'}}}"></Text>
+						<Text text="{HistoryModel>WiCt}"></Text>
+						<!-- Extends table rows on history tab -->
+						<core:ExtensionPoint name="CustomerExtensionForHistoryTableCells"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</content>
+</IconTabFilter>

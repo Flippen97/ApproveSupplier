@@ -1,0 +1,27 @@
+<!--****************************************************/
+// Filename: Attachment.fragment.xml
+// Created: Jerushan Benjamin
+// Change history:
+// 18.4.2018 
+fragment for the attachment section of the icon tab bar
+/****************************************************-->
+<IconTabFilter id="iconTabBarFilter2" icon="sap-icon://attachment" xmlns:core="sap.ui.core" text="{i18n>Attachment}" xmlns="sap.m" xmlns:f="sap.ui.layout.form"
+	xmlns:html="http://www.w3.org/1999/xhtml" tooltip="{i18n>detailIconTabBarAttachments}">
+	<content>
+		<List id="AttachmentList" items="{attachModel>/branch}" inset="true" showSeparators="None">
+			<items>
+				<CustomListItem>
+					<HBox>
+						<core:Icon size="2rem" src="sap-icon://attachment-photo" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom"/>
+						<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+							<Link emphasized="true" text="{attachModel>Belnr}" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" href="{attachModel>Url}"
+								press="handleLinkPress"/>
+							<!--<Label text=" Info : {attachModel>Detail}"/>-->
+						</VBox>
+					</HBox>
+				</CustomListItem>
+			</items>
+		</List>
+	</content>
+
+</IconTabFilter>

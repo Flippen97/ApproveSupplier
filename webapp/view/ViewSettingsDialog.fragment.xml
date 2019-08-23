@@ -1,0 +1,54 @@
+<!--****************************************************/
+// Filename: ViewSettingDialog.fragment.xml
+// Created: Jerushan Benjamin
+// Change history:
+// 18.4.2018 
+fragment for the filter section of the icon tab bar
+/****************************************************-->
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<ViewSettingsDialog class="masterFilterclass" id="viewSettingsDialog" confirm="onConfirmViewSettingsDialog"
+		resetFilters="onViewSettingsDialogResetFilters">
+		<filterItems >
+			<ViewSettingsFilterItem id="Filterpriority" text="{i18n>priority}" key="WiPrio" multiSelect="false">
+				<items>
+					<ViewSettingsItem text="{i18n>filter.vhigh}" key="7"/>
+					<ViewSettingsItem text="{i18n>filter.high}" key="6"/>
+					<ViewSettingsItem text="{i18n>filter.med}" key="5"/>
+					<ViewSettingsItem text="{i18n>filter.low}" key="4"/>
+				</items>
+			</ViewSettingsFilterItem>
+			
+			<ViewSettingsCustomItem id="idCustomFilterItem" text="{i18n>filter.createDat}" key="WiCd">
+				<customControl>
+					<l:Grid class="sapUiSmallMarginTop customDatePadding" hSpacing="2" vSpacing="4" defaultSpan="L6 M6 S12">
+						<l:content>
+							<Label text="{i18n>filter.createDatF}" class="FilterDateLabelText">
+								<layoutData>
+									<l:GridData span="L12 M12 S12"/>
+								</layoutData>
+							</Label>
+							<DatePicker width="80%" id="DP2" value="{WiCd}" valueFormat="dd-MM-yyyy" displayFormat="dd-MM-yyyy" change="handleDate2Change"
+								class="filterDatePickerclass">
+								<layoutData>
+									<l:GridData span="L12 M12 S12"/>
+								</layoutData>
+							</DatePicker>
+							<Label text="{i18n>filter.createDatT}" class="FilterDateLabelText">
+								<layoutData>
+									<l:GridData span="L12 M12 S12"/>
+								</layoutData>
+							</Label>
+							<DatePicker width="80%" id="DP1" value="{WiCd}" valueFormat="dd-MM-yyyy" displayFormat="dd-MM-yyyy" change="handleDate1Change"
+								class="filterDatePickerclass">
+								<layoutData>
+									<l:GridData span="L12 M12 S12"/>
+								</layoutData>
+							</DatePicker>
+						</l:content>
+					</l:Grid>
+				</customControl>
+			</ViewSettingsCustomItem>
+		</filterItems>
+	</ViewSettingsDialog>
+</core:FragmentDefinition>
